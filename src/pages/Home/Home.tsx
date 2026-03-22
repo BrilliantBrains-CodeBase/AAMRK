@@ -1,3 +1,4 @@
+import LeadForm from "../../layout/lead form/LeadForm"
 import CTASection from "./components/CTASection"
 import GetLocation from "./components/GetLocation"
 import GetStarted from "./components/GetStarted"
@@ -16,6 +17,7 @@ const Home = () => {
       <GetStarted />
       <GetLocation />
       <CTASection />
+      <LeadForm />
     </div>
   )
 }

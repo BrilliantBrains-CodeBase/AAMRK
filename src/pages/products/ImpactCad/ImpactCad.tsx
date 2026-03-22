@@ -1,3 +1,4 @@
+import LeadForm from "../../../layout/lead form/LeadForm";
 import CTASection from "../../Home/components/CTASection";
 import ComparisonSection from "./ComparisonSection";
 import DiemakingSteps from "./DiemakingSteps";
@@ -48,6 +49,7 @@ const ImpactCad = () => {
       </div>
       <FeaturesSection />
       <CTASection />
+      <LeadForm />
     </div>
   );
 };

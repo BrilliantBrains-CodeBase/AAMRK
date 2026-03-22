@@ -10,6 +10,7 @@ import ERPPack from './pages/products/ERPPack/ERPPack'
 import TopCNC from './pages/products/TopCNC/TopCNC'
 import NotFound from './pages/NotFound/NotFound'
 import PrivacyPolicy from './pages/legal/PrivacyPolicy'
+import ThankYou from './pages/Thankyou/ThankYou'
 
 function App() {
   return (
@@ -23,10 +24,10 @@ function App() {
           <Route path='studiorip' element={<StudioRip />} />
           <Route path='erp-pack' element={<ERPPack />} />
           <Route path='top-cnc' element={<TopCNC />} />
+        <Route path='/privacy' element={<PrivacyPolicy />} />
         </Route>
 
-        <Route path='/privacy' element={<PrivacyPolicy />} />
-
+        <Route path='/thank-you' element={<ThankYou />} />
         {/* 404 */}
         <Route path="*" element={<NotFound />} />
       </Routes>

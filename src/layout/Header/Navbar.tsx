@@ -42,7 +42,7 @@ const Navbar = () => {
               onMouseLeave={() => setProductOpen(false)}
             >
               {/* Trigger */}
-              <div className="flex items-center gap-1 cursor-pointer text-blue-500 font-medium text-sm">
+              <div className="flex items-center gap-1 cursor-pointer text-gray-500 font-medium text-sm">
                 PRODUCTS
               </div>
 

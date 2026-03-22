@@ -5,6 +5,7 @@ import StudioRipComparison from "./components/StudioRipComparision";
 import StudioRipFeatures from "./components/StudioRipFeatures";
 import StudioRipHero from "./components/StudioRipHero";
 import StudioRipSteps from "./components/StudioRipSteps";
+import LeadForm from "../../../layout/lead form/LeadForm";
 
 const StudioRip = () => {
   return (
@@ -44,6 +45,7 @@ const StudioRip = () => {
       <PreviewSection />
       <StudioRipFeatures />
       <CTASection />
+      <LeadForm />
     </div>
   );
 };

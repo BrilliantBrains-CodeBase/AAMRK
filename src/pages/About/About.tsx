@@ -1,6 +1,8 @@
 import { Helmet } from "react-helmet-async";
 import WhyChooseUs from "../Home/components/WhyChooseUs";
 import AboutSection from "./components/AboutSection";
+import CTASection from "../Home/components/CTASection";
+import LeadForm from "../../layout/lead form/LeadForm";
 
 const About = () => {
   return (
@@ -30,6 +32,8 @@ const About = () => {
 
       <WhyChooseUs />
       <AboutSection />
+      <CTASection />
+      <LeadForm />
     </div>
   );
 };
