@@ -1,17 +1,36 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Select from "react-select";
+import countries from "i18n-iso-countries";
+import en from "i18n-iso-countries/langs/en.json";
+
+countries.registerLocale(en);
+
+ const countryOptions = Object.entries(countries.getNames("en")).map(
+  ([code, name]) => ({
+    label: `${name} (${code})`, // 👈 shown in UI
+    value: {
+      name,
+      code,
+    },
+  })
+);
 
 const LeadForm = () => {
 const navigate = useNavigate();
 
   const [form, setForm] = useState({
-    firstName: "",
-    lastName: "",
-    phone: "",
-    email: "",
-    solution: "",
-    message: "",
-  });
+  firstName: "",
+  lastName: "",
+  phone: "",
+  email: "",
+  solution: "",
+  country: {
+    name: "",
+    code: "",
+  },
+  message: "",
+});
 
   const [loading, setLoading] = useState(false);
 
@@ -19,8 +38,22 @@ const navigate = useNavigate();
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  const handleCountryChange = (
+  selected: { label: string; value: { name: string; code: string } } | null
+) => {
+  setForm({
+    ...form,
+    country: selected?.value || { name: "", code: "" },
+  });
+};
+
   const handleSubmit = async (e: any) => {
   e.preventDefault();
+
+ if (!form.country.code) {
+  alert("Please select a country");
+  return;
+}
   setLoading(true);
 
   try {
@@ -29,7 +62,9 @@ const navigate = useNavigate();
       source: window.location.pathname, // 🔥 tracking
     };
 
-    await fetch("https://script.google.com/macros/s/AKfycbyzr4kGhVWcNNiRSquxGLPzmj9jLkOHEhCriHnWcoVYejeCv5Ojiiy80YxBTiv1djx6/exec", {
+    // console.log(payload)
+
+    await fetch("https://script.google.com/macros/s/AKfycbwnsX83wt3sThWmSN10JlN-Ocg_icUoR_3Hs-4FdT3FUx4MsXKZwB-k1MsadLq8Dk8/exec", {
       method: "POST",
       mode: "no-cors",
       body: JSON.stringify(payload),
@@ -111,6 +146,23 @@ const navigate = useNavigate();
               required
               className="border border-gray-300 px-4 py-3 rounded-md focus:outline-none focus:border-blue-500"
             />
+          </div>
+
+          <div className="mb-4">
+            <label className="block text-sm font-medium text-[#2f3e6e] mb-2">
+              Country *
+            </label>
+
+                    <Select
+                        options={countryOptions}
+                        value={
+                          countryOptions.find(
+                            (c) => c.value.code === form.country.code
+                          ) || null
+                        }
+                        onChange={handleCountryChange}
+                        placeholder="Select Country"
+                      />
           </div>
 
           {/* Select */}
